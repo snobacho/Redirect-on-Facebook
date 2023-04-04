@@ -8,8 +8,24 @@
 </head>
 <body>
     <script>
-		var fbAppUrl = "fb://watch/video?id=1276271756631796"; 
 		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
+	
+		function redirectToPlayStore() {
+			window.location = playStoreUrl;
+		}
+	
+		var intentUrl = "intent://watch/video?id=942007843648981#Intent;package=com.facebook.katana;scheme=fb;end";
+		document.location = intentUrl;
+	
+		setTimeout(function() {
+			if (!document.webkitHidden) {
+				redirectToPlayStore();
+			}
+		}, 5000);
+	</script>
+	
+	<script>
+		var fbAppUrl = "fb://watch/video?id=942007843648981";
 		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
 	
 		function redirectToFacebook() {
@@ -25,21 +41,16 @@
 			window.location = appStoreUrl;
 		}
 	
-		function redirectToPlayStore() {
-			window.location = playStoreUrl;
-		}
-	
 		if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-			redirectToAppStore();
-		} else if (navigator.userAgent.match(/android/i)) {
-			document.location = fbAppUrl;
-			setTimeout(function() {
-				if (!document.webkitHidden) {
-					redirectToPlayStore();
-				}
-			}, 5000);
+			if (window.location.protocol === "https:") {
+				redirectToFacebook();
+			} else {
+				redirectToAppStore();
+			}
 		}
 	</script>
+	
+	
 
 </body>
 </html>
