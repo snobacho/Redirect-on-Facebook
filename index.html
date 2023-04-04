@@ -4,29 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="al:android:url" content="https://www.facebook.com/reel/743930687437177/?s=single_unit" />
+    <meta property="al:android:package" content="com.yourapp.package" />
+    <meta property="al:android:app_name" content="Your App Name" />
     <title>Document</title>
 </head>
 <body>
     <h1 style="text-align: center;">MY SITE</h1>
     <script>
-        setTimeout(function() {
-            var isAndroid = /(android)/i.test(navigator.userAgent);
-            var isiOS = /(iphone|ipad|ipod)/i.test(navigator.userAgent);
-            var videoLink = "https://www.facebook.com/reel/743930687437177/?s=single_unit";
-                
-            if (isAndroid) {
-                window.location.href = "intent://#Intent;package=com.facebook.katana;scheme=fb;end";
-            } else if (isiOS) {
-                window.location.href = "fb://";
-            } else {
-                window.location.href = videoLink;
-            }
-
-            setTimeout(function(){
-                location.reload();
-            }, 5000);
-        }, 5000);
-    </script>
+        var isFacebookAppInstalled = false;
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
+          isFacebookAppInstalled = true;
+        }
+        
+        if (isFacebookAppInstalled) {
+          window.location = "yourapp://video/{id}";
+        } else {
+          window.location = "https://play.google.com/store/apps/details?id=com.yourapp.package";
+        }
+      </script>
 
 </body>
 </html>
