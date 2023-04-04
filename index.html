@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="al:android:url" content="myapp://video/743930687437177" />
     <meta property="al:android:package" content="com.yourapp.package" />
-    <meta property="al:android:app_name" content="Facebook" />
     <title>FB Redirect</title>
 </head>
 <body>
@@ -15,17 +13,18 @@
         var isFacebookAppInstalled = false;
         var ua = navigator.userAgent || navigator.vendor || window.opera;
         if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
-            isFacebookAppInstalled = true;
+          isFacebookAppInstalled = true;
         }
-        
+      
         setTimeout(function() {
-            if (isFacebookAppInstalled) {
-            window.location = "yourapp://video/{id}";
-            } else {
-            window.location = "https://play.google.com/store/apps/details?id=com.yourapp.package";
-            }
+          if (isFacebookAppInstalled) {
+            window.location = "fb://facewebmodal/f?href=https://www.facebook.com/reel/743930687437177/?s=single_unit";
+          } else {
+            window.location = "https://play.google.com/store/apps/details?id=com.facebook.katana";
+          }
         }, 5000);
-    </script>
+      </script>
+      
 
 </body>
 </html>
