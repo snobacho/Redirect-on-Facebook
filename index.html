@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="al:android:url" content="https://www.facebook.com/reel/743930687437177/?s=single_unit" />
+    <meta property="al:android:url" content="myapp://video/743930687437177" />
     <meta property="al:android:package" content="com.yourapp.package" />
-    <meta property="al:android:app_name" content="Your App Name" />
-    <title>Document</title>
+    <meta property="al:android:app_name" content="Facebook" />
+    <title>FB Redirect</title>
 </head>
 <body>
     <h1 style="text-align: center;">MY SITE</h1>
@@ -18,7 +18,6 @@
             isFacebookAppInstalled = true;
         }
         
-        // Redirect the user to the app or app store after 5 seconds
         setTimeout(function() {
             if (isFacebookAppInstalled) {
             window.location = "yourapp://video/{id}";
