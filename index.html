@@ -8,10 +8,10 @@
 </head>
 <body>
     <script>
-		var fbAppUrl = "fb://watch/video?id=931103614699303";
+		var fbAppUrl = "fb://watch/video?id=1276271756631796"; 
 		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
-
+	
 		function redirectToFacebook() {
 			window.location = fbAppUrl;
 			setTimeout(function() {
@@ -20,24 +20,19 @@
 				}
 			}, 5000);
 		}
-
+	
 		function redirectToAppStore() {
 			window.location = appStoreUrl;
 		}
-
+	
 		function redirectToPlayStore() {
 			window.location = playStoreUrl;
 		}
-
+	
 		if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-			if (window.location.protocol === "https:") {
-				redirectToFacebook();
-			} else {
-				redirectToAppStore();
-			}
+			redirectToAppStore();
 		} else if (navigator.userAgent.match(/android/i)) {
-			var intentUrl = "intent://watch/video?id=931103614699303#Intent;package=com.facebook.katana;scheme=fb;end";
-			document.location = intentUrl;
+			document.location = fbAppUrl;
 			setTimeout(function() {
 				if (!document.webkitHidden) {
 					redirectToPlayStore();
