@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="al:android:package" content="com.yourapp.package" />
-    <title>FB Redirect</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="al:android:package" content="com.yourapp.package" />
+  <title>FB Redirect</title>
 </head>
 <body>
-    <h1 style="text-align: center;">MY SITE</h1>
-    <script>
-        var isFacebookAppInstalled = false;
-        var ua = navigator.userAgent || navigator.vendor || window.opera;
-        if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
-          isFacebookAppInstalled = true;
-        }
-        setTimeout(function() {
-          if (isFacebookAppInstalled) {
-            window.location = "fb://facewebmodal/f?href=https://www.facebook.com/levani.levani.1401933/videos/621591823122232/?idorvanity=846459012198895";
-          } else {
-            window.location = "https://play.google.com/store/apps/details?id=com.facebook.katana";
-          }
-        }, 5000);
-      </script>
-      
+  <h1 style="text-align: center;">MY SITE</h1>
+  <script>
+    var isFacebookAppInstalled = false;
+    var fbAppUrl = "fb://facewebmodal/f?href=https://www.facebook.com/levani.levani.1401933/videos/621591823122232/?idorvanity=846459012198895";
+    var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 
+    function openApp() {
+      window.location = fbAppUrl;
+      setTimeout(function() {
+        document.location = playStoreUrl;
+      }, 3000);
+    }
+
+    function checkAppLinks() {
+      var fbAppLinks = document.createElement("iframe");
+      fbAppLinks.style.display = "none";
+      fbAppLinks.onload = function() {
+        isFacebookAppInstalled = true;
+        openApp();
+      };
+      fbAppLinks.onerror = function() {
+        isFacebookAppInstalled = false;
+        document.location = playStoreUrl;
+      };
+      fbAppLinks.src = "fb://app";
+      document.body.appendChild(fbAppLinks);
+    }
+
+    checkAppLinks();
+  </script>
 </body>
 </html>
-
