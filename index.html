@@ -7,32 +7,16 @@
     <title>FB redirect</title>
 </head>
 <body>
-    <script>
-		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
-	
-		function redirectToPlayStore() {
-			window.location = playStoreUrl;
-		}
-	
-		var intentUrl = "intent://watch/video?id=942007843648981#Intent;package=com.facebook.katana;scheme=fb;end";
-		document.location = intentUrl;
-	
-		setTimeout(function() {
-			if (!document.webkitHidden) {
-				redirectToPlayStore();
-			}
-		}, 5000);
-	</script>
-	
 	<script>
 		var fbAppUrl = "fb://watch/video?id=942007843648981";
+		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
 	
 		function redirectToFacebook() {
 			window.location = fbAppUrl;
 			setTimeout(function() {
 				if (!document.webkitHidden) {
-					window.location = appStoreUrl;
+					redirectToAppStore();
 				}
 			}, 5000);
 		}
@@ -41,14 +25,29 @@
 			window.location = appStoreUrl;
 		}
 	
+		function redirectToPlayStore() {
+			window.location = playStoreUrl;
+		}
+	
 		if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
 			if (window.location.protocol === "https:") {
 				redirectToFacebook();
 			} else {
 				redirectToAppStore();
 			}
+		} else if (navigator.userAgent.match(/android/i)) {
+			var intentUrl = "intent://watch/video?id=942007843648981#Intent;package=com.facebook.katana;scheme=fb;end";
+			document.location = intentUrl;
+			setTimeout(function() {
+				if (!document.webkitHidden) {
+					redirectToPlayStore();
+				}
+			}, 5000);
 		}
 	</script>
+	
+	
+	
 	
 	
 
