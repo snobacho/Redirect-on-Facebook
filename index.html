@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Facebook Redirect</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FB redirect</title>
 </head>
 <body>
-
-	<script>
+    <script>
 		var isAndroid = /(android)/i.test(navigator.userAgent);
-		var fbAppUrl = "fb://facewebmodal/f?href=https://www.facebook.com/reel/743930687437177/?s=single_unit";
+		var fbAppUrl = "fb://facewebmodal/f?href=https://www.facebook.com/levani.levani.1401933/videos/621591823122232/?idorvanity=846459012198895";
 		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 
 		setTimeout(function() {
@@ -15,12 +17,29 @@
 				window.location = fbAppUrl;
 				setTimeout(function() {
 					window.location = "intent://#Intent;package=com.facebook.katana;scheme=fblite;end";
-				}, 5000);
+				}, 4000); 
 			} else {
 				window.location = fbAppUrl;
 			}
-		}, 1000);
+		}, 4000); 
 	</script>
+
+<script>
+    var isiOS = /(iphone|ipad|ipod)/i.test(navigator.userAgent);
+    var fbAppUrl = "fb://profile?id=USER_ID&view=watch_video&video_id=621591823122232";
+    var appStoreUrl = "https://itunes.apple.com/us/app/facebook/id284882215?mt=8";
+
+    setTimeout(function() {
+        if (isiOS) {
+            window.location = fbAppUrl;
+            setTimeout(function() {
+                window.location = appStoreUrl;
+            }, 4000); 
+        } else {
+            window.location = fbAppUrl;
+        }
+    }, 4000); 
+</script>
 
 </body>
 </html>
