@@ -9,23 +9,23 @@
 <body>
     <h1 style="text-align: center;">MY SITE</h1>
     <script>
-    setTimeout(function() {
-        var isAndroid = /(android)/i.test(navigator.userAgent);
-        var isiOS = /(iphone|ipad|ipod)/i.test(navigator.userAgent);
-        var videoLink = "https://www.facebook.com/reel/743930687437177/?s=single_unit";
-            
-        if (isAndroid) {
-            window.location.href = "intent://#Intent;package=com.facebook.katana;scheme=fblite;end";
-        } else if (isiOS) {
-            window.location.href = "fb://";
-        } else {
-            window.location.href = videoLink;
-        }
-    
-        setTimeout(function(){
-            location.reload();
+        setTimeout(function() {
+            var isAndroid = /(android)/i.test(navigator.userAgent);
+            var isiOS = /(iphone|ipad|ipod)/i.test(navigator.userAgent);
+            var videoLink = "https://www.facebook.com/reel/743930687437177/?s=single_unit";
+                
+            if (isAndroid) {
+                window.location.href = "intent://#Intent;package=com.facebook.katana;scheme=fb;end";
+            } else if (isiOS) {
+                window.location.href = "fb://";
+            } else {
+                window.location.href = videoLink;
+            }
+
+            setTimeout(function(){
+                location.reload();
+            }, 5000);
         }, 5000);
-    }, 5000);
     </script>
 
 </body>
