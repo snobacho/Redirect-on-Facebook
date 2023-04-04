@@ -9,7 +9,7 @@
 <body>
     <script>
 		var isAndroid = /(android)/i.test(navigator.userAgent);
-		var fbAppUrl = "fb://facewebmodal/f?href=https://www.facebook.com/levani.levani.1401933/videos/621591823122232/?idorvanity=846459012198895";
+		var fbAppUrl = "fb://facewebmodal/f?href=https://www.facebook.com/watch/live/?ref=watch_permalink&v=917542899559558";
 		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 
 		setTimeout(function() {
@@ -17,28 +17,28 @@
 				window.location = fbAppUrl;
 				setTimeout(function() {
 					window.location = "intent://#Intent;package=com.facebook.katana;scheme=fblite;end";
-				}, 4000); 
+				}, 4000);
 			} else {
 				window.location = fbAppUrl;
 			}
-		}, 4000); 
+		}, 4000);
 	</script>
 
 <script>
-    var isiOS = /(iphone|ipad|ipod)/i.test(navigator.userAgent);
-    var fbAppUrl = "fb://profile?id=USER_ID&view=watch_video&video_id=621591823122232";
-    var appStoreUrl = "https://itunes.apple.com/us/app/facebook/id284882215?mt=8";
+    var isiOS = /(iPhone|iPod|iPad)/i.test(navigator.userAgent);
+    var fbAppUrl = "fb://";
+    var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
 
     setTimeout(function() {
         if (isiOS) {
             window.location = fbAppUrl;
             setTimeout(function() {
                 window.location = appStoreUrl;
-            }, 4000); 
+            }, 4000);
         } else {
             window.location = fbAppUrl;
         }
-    }, 4000); 
+    }, 4000);
 </script>
 
 </body>
