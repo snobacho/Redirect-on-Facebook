@@ -1,42 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="al:android:package" content="com.yourapp.package" />
-  <title>FB Redirect</title>
+	<title>Facebook Redirect</title>
 </head>
 <body>
-  <h1 style="text-align: center;">MY SITE</h1>
-  <script>
-    var isFacebookAppInstalled = false;
-    var fbAppUrl = "fb://facewebmodal/f?href=https://www.facebook.com/levani.levani.1401933/videos/621591823122232/?idorvanity=846459012198895";
-    var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 
-    function openApp() {
-      window.location = fbAppUrl;
-      setTimeout(function() {
-        document.location = playStoreUrl;
-      }, 3000);
-    }
+	<script>
+		var isAndroid = /(android)/i.test(navigator.userAgent);
+		var fbAppUrl = "fb://facewebmodal/f?href=https://www.facebook.com/reel/743930687437177/?s=single_unit";
+		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 
-    function checkAppLinks() {
-      var fbAppLinks = document.createElement("iframe");
-      fbAppLinks.style.display = "none";
-      fbAppLinks.onload = function() {
-        isFacebookAppInstalled = true;
-        openApp();
-      };
-      fbAppLinks.onerror = function() {
-        isFacebookAppInstalled = false;
-        document.location = playStoreUrl;
-      };
-      fbAppLinks.src = "fb://app";
-      document.body.appendChild(fbAppLinks);
-    }
+		setTimeout(function() {
+			if (isAndroid) {
+				window.location = fbAppUrl;
+				setTimeout(function() {
+					window.location = "intent://#Intent;package=com.facebook.katana;scheme=fblite;end";
+				}, 5000);
+			} else {
+				window.location = fbAppUrl;
+			}
+		}, 1000);
+	</script>
 
-    checkAppLinks();
-  </script>
 </body>
 </html>
