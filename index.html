@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="al:android:package" content="com.yourapp.package" />
-    <title>FB Redirect</title>
+    <title>Redirect to Facebook</title>
 </head>
 <body>
     <h1 style="text-align: center;">MY SITE</h1>
     <script>
-        var videoUrl = "https://www.facebook.com/reel/743930687437177/?s=single_unit";
-        var fbAppUrl = "fb://facewebmodal/f?href=" + encodeURIComponent(videoUrl);
         var isFacebookAppInstalled = false;
         var ua = navigator.userAgent || navigator.vendor || window.opera;
+        var videoLink = "https://www.facebook.com/levani.levani.1401933/videos/621591823122232/?idorvanity=846459012198895";
+        var facebookLink = "fb://facewebmodal/f?href=" + encodeURIComponent(videoLink);
+        var playStoreLink = "https://play.google.com/store/apps/details?id=com.facebook.katana";
+        var appStoreLink = "itms-apps://itunes.apple.com/app/facebook/id284882215";
+
         if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
-          isFacebookAppInstalled = true;
+            isFacebookAppInstalled = true;
         }
+
         setTimeout(function() {
-          if (isFacebookAppInstalled) {
-            window.location = fbAppUrl;
-          } else {
-            window.location = "https://play.google.com/store/apps/details?id=com.facebook.katana";
-          }
+            if (isFacebookAppInstalled) {
+                window.location = facebookLink;
+            } else {
+                if (ua.indexOf("Android") > -1) {
+                    window.location = playStoreLink;
+                } else if (ua.indexOf("iPhone") > -1 || ua.indexOf("iPad") > -1 || ua.indexOf("iPod") > -1) {
+                    window.location = appStoreLink;
+                } else {
+                    window.location = videoLink;
+                }
+            }
         }, 5000);
     </script>
-      
-
 </body>
 </html>
