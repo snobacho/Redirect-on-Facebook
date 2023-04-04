@@ -10,20 +10,21 @@
 <body>
     <h1 style="text-align: center;">MY SITE</h1>
     <script>
+        var videoUrl = "https://www.facebook.com/reel/743930687437177/?s=single_unit";
+        var fbAppUrl = "fb://facewebmodal/f?href=" + encodeURIComponent(videoUrl);
         var isFacebookAppInstalled = false;
         var ua = navigator.userAgent || navigator.vendor || window.opera;
         if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
           isFacebookAppInstalled = true;
         }
-      
         setTimeout(function() {
           if (isFacebookAppInstalled) {
-            window.location = "fb://facewebmodal/f?href=https://www.facebook.com/reel/743930687437177/?s=single_unit";
+            window.location = fbAppUrl;
           } else {
             window.location = "https://play.google.com/store/apps/details?id=com.facebook.katana";
           }
         }, 5000);
-      </script>
+    </script>
       
 
 </body>
