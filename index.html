@@ -10,8 +10,6 @@
 <body>
     <h1 style="text-align: center;">MY SITE</h1>
     <script>
-        var videoUrl = "https://www.facebook.com/reel/743930687437177/?s=single_unit";
-        var fbAppUrl = "fb://facewebmodal/f?href=" + encodeURIComponent(videoUrl);
         var isFacebookAppInstalled = false;
         var ua = navigator.userAgent || navigator.vendor || window.opera;
         if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
@@ -19,26 +17,13 @@
         }
         setTimeout(function() {
           if (isFacebookAppInstalled) {
-            window.location = fbAppUrl;
+            window.location = "fb://facewebmodal/f?href=https://www.facebook.com/reel/743930687437177/?s=single_unit";
           } else {
             window.location = "https://play.google.com/store/apps/details?id=com.facebook.katana";
           }
         }, 5000);
-    </script>
+      </script>
       
-
-      <script>
-  var isFacebookAppInstalled = false;
-  if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/)) {
-    if (window.location.href.indexOf("facebook.com") > -1) {
-      window.location.href = "fb://profile/743930687437177";
-    } else {
-      window.location.href = "https://apps.apple.com/us/app/facebook/id284882215";
-    }
-  } else {
-    window.location.href = "https://www.facebook.com/reel/743930687437177/?s=single_unit";
-  }
-</script>
 
 </body>
 </html>
