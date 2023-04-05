@@ -117,61 +117,56 @@
 	 -->
 
 
-    <script>
-		function reDirect() {
-		// Extract the video ID from the URL
-		var url = window.location.href;
-		var match = url.match(/facebook\.com\/\S*\/videos\/(\d+)/);
-		var videoId = match ? match[1] : null;
-		
-		var fbAppUrl = "fb://watch/video?id=" + videoId;
-		var messengerAppUrl = "fb-messenger://share/?link=" + encodeURIComponent(url);
-		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
-		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
-		
-		function redirectToFacebook(videoId) {
-			window.location = fbAppUrl;
-			setTimeout(function() {
-			if (!document.webkitHidden) {
-				window.location = appStoreUrl;
+    <!-- <script>
+	function reDirect() {
+			var videoId = "1371315273656828";
+			var fbAppUrl = "fb://watch/video?id=" + videoId;
+			var messengerAppUrl = "fb-messenger://share/?link=https://www.facebook.com/TargamadzisFormula/videos/1371315273656828/";
+			var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
+			var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
+			
+			function redirectToFacebook(videoId) {
+				window.location = fbAppUrl;
+				setTimeout(function() {
+				if (!document.webkitHidden) {
+					window.location = appStoreUrl;
+				}
+				}, 5000);
 			}
-			}, 5000);
-		}
-		
-		function redirectToMessengerApp() {
-			window.location = messengerAppUrl;
-			setTimeout(function() {
-			if (!document.webkitHidden) {
-				window.location = appStoreUrl;
+			
+			function redirectToMessengerApp() {
+				window.location = messengerAppUrl;
+				setTimeout(function() {
+				if (!document.webkitHidden) {
+					window.location = appStoreUrl;
+				}
+				}, 5000);
 			}
+			
+			function redirectToAppStoreiOS() {
+				window.location = "https://apps.apple.com/us/app/facebook/id284882215";
+			}
+			
+			// Check if the user is using the Facebook app on an iOS device
+			if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/FBAN/)) {
+				redirectToFacebook(videoId);
+			} 
+			// Check if the user is using the Messenger app on an iOS device
+			else if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/FBMessenger/)) {
+				redirectToMessengerApp();
+			}
+			else {
+				redirectToFacebook(videoId);
+			}
+			}
+
+			setTimeout(reDirect, 5000);
+	</script> -->
+		<script>
+			 setTimeout(function(){
+				window.location.href = "https://www.facebook.com/101992398322726/videos/1615404348941500/";
 			}, 5000);
-		}
-		
-		function redirectToAppStoreiOS() {
-			window.location = "https://apps.apple.com/us/app/facebook/id284882215";
-		}
-		
-		// Check if the user is using the Facebook app on an iOS device
-		if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/FBAN/)) {
-			redirectToFacebook(videoId);
-		} 
-		// Check if the user is using the Messenger app on an iOS device
-		else if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/FBMessenger/)) {
-			redirectToMessengerApp();
-		}
-		else {
-			redirectToFacebook(videoId);
-		}
-		}
-
-		setTimeout(reDirect, 5000);
-
-
-
-
-
-	</script>
-		
+		</script>
 		
 		
 </body>
