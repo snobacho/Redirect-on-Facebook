@@ -92,10 +92,9 @@
 	</script> -->
 
 
-
 	<script>
 		function redirectToFacebookLive() {
-		  var fbAppUrl = "fb://watch/live?id=106617162108748";
+		  var fbAppUrl = "fb://watch/live?id=jJ7nwPp6Vu";
 		  var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 		  var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
 		
@@ -122,8 +121,8 @@
 			} else {
 			  redirectToAppStore();
 			}
-		  } else if (navigator.userAgent.match(/android/)) {
-			var intentUrl = "intent://watch/live?id=106617162108748#Intent;package=com.facebook.katana;scheme=fb;end";
+		  } else if (navigator.userAgent.match(/android/i)) {
+			var intentUrl = "intent://watch/live?id=jJ7nwPp6Vu#Intent;package=com.facebook.katana;scheme=fb;end";
 			document.location = intentUrl;
 			setTimeout(function() {
 			  if (!document.webkitHidden) {
@@ -135,7 +134,7 @@
 		
 		setTimeout(function() {
 		  redirectToFacebookLive();
-		}, 10000); 
+		}, 10000); // Redirect after 10 seconds
 		</script>
 		
 		
