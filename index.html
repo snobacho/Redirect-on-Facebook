@@ -117,12 +117,15 @@
 	</script>
 	 -->
 	 <script>
-	 function redirect() {
-		var url = "snobacho.github.io/redirect"; 
-		window.location.href = url;
-	 }
-		redirect()
-	 </script>
+		function redirect() {
+			var url = "https://snobacho.github.io/redirect"; 
+			window.location.href = url;
+		}
+
+		window.onload = function() {
+			redirect();
+		};
+	</script>
 
 		
      <script>
