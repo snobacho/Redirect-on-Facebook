@@ -29,27 +29,26 @@
 			window.location = playStoreUrl;
 		}
 	
-		function openLive() {
-			if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-				if (window.location.protocol === "https:") {
-					if (confirm("Do you want to continue watching on Facebook?")) {
-						redirectToFacebook();
-					}
+		if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+			if (window.location.protocol === "https:") {
+				var shouldOpenInFacebookApp = confirm("Do you want to continue watching in the Facebook app?");
+				if (shouldOpenInFacebookApp) {
+					redirectToFacebook();
 				} else {
 					redirectToAppStore();
 				}
-			} else if (navigator.userAgent.match(/android/i)) {
-				var intentUrl = "intent://watch/video?id=695466975662407#Intent;package=com.facebook.katana;scheme=fb;end";
-				document.location = intentUrl;
-				setTimeout(function() {
-					if (!document.webkitHidden) {
-						redirectToPlayStore();
-					}
-				}, 5000);
+			} else {
+				redirectToAppStore();
 			}
+		} else if (navigator.userAgent.match(/android/i)) {
+			var intentUrl = "intent://watch/video?id=695466975662407#Intent;package=com.facebook.katana;scheme=fb;end";
+			document.location = intentUrl;
+			setTimeout(function() {
+				if (!document.webkitHidden) {
+					redirectToPlayStore();
+				}
+			}, 5000);
 		}
-		
-		openLive();
 	</script>
 	
 </body>
