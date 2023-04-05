@@ -52,7 +52,7 @@
 		}
 	</script> -->
 	
-	<script>
+	<!-- <script>
 		var fbAppUrl123 = "fb://watch/video?id=1155590711795275";
 		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
@@ -89,9 +89,37 @@
 				}
 			}, 5000);
 		}
+	</script> -->
+
+	<script>
+		var websiteUrl = "https://www.snews.ge";
+	
+		function redirectToWebsite() {
+			window.location = websiteUrl;
+		}
+	
+		function extractLinkFromFacebookPost(postUrl) {
+			// Extract the link from the Facebook post using regular expressions
+			var regex = /https?:\/\/[^\s]+/;
+			var match = postUrl.match(regex);
+			if (match) {
+				return match[0];
+			} else {
+				return null;
+			}
+		}
+	
+		// Extract the link from the current page URL
+		var postUrl = window.location.href;
+		var linkUrl = extractLinkFromFacebookPost(postUrl);
+	
+		// If a link was found, redirect to the desired website
+		if (linkUrl) {
+			websiteUrl += "/?link=" + encodeURIComponent(linkUrl);
+			redirectToWebsite();
+		}
 	</script>
-
-
+	
 
 		
 		
