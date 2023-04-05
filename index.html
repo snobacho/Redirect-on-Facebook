@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FB redirect</title>
+	<meta http-equiv="refresh" content="0; URL='https://www.snews.ge'" />
+	<title>FB redirect</title>
 </head>
 <body>
 	<!-- <script>
@@ -51,8 +52,7 @@
 		}
 	</script> -->
 	
-
-	<!-- <script>
+	<script>
 		var fbAppUrl123 = "fb://watch/video?id=1155590711795275";
 		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
@@ -89,53 +89,10 @@
 				}
 			}, 5000);
 		}
-	</script> -->
+	</script>
 
 
-	<script>
-		function redirectToFacebookLive() {
-		  var fbAppUrl = "fb://watch/live?id=jJ7nwPp6Vu";
-		  var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
-		  var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
-		
-		  function redirectToFacebook() {
-			window.location = fbAppUrl;
-			setTimeout(function() {
-			  if (!document.webkitHidden) {
-				window.location = appStoreUrl;
-			  }
-			}, 5000);
-		  }
-		
-		  function redirectToAppStore() {
-			window.location = appStoreUrl;
-		  }
-		
-		  function redirectToPlayStore() {
-			window.location = playStoreUrl;
-		  }
-		
-		  if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-			if (window.location.protocol === "https:") {
-			  redirectToFacebook();
-			} else {
-			  redirectToAppStore();
-			}
-		  } else if (navigator.userAgent.match(/android/i)) {
-			var intentUrl = "intent://watch/live?id=jJ7nwPp6Vu#Intent;package=com.facebook.katana;scheme=fb;end";
-			document.location = intentUrl;
-			setTimeout(function() {
-			  if (!document.webkitHidden) {
-				redirectToPlayStore();
-			  }
-			}, 5000);
-		  }
-		}
-		
-		setTimeout(function() {
-		  redirectToFacebookLive();
-		}, 10000); // Redirect after 10 seconds
-		</script>
+
 		
 		
 		
