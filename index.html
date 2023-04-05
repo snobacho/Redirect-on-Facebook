@@ -7,6 +7,8 @@
 	<title>FB redirect</title>
 </head>
 <body>
+	<a href="fb://video/?href=https%3A%2F%2Fwww.facebook.com%2Frustavi2%2Fvideos%2F1182678262446550" onerror="this.href='https://www.facebook.com/rustavi2/videos/1182678262446550'; setTimeout(function() { window.location.href = 'https://www.facebook.com/rustavi2/videos/1182678262446550'; }, 5000);">Watch on Facebook</a>
+
 	<!-- <script>
 		var fbAppUrl = "fb://watch/video?id=695466975662407";
 		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
@@ -162,12 +164,14 @@
 
 			setTimeout(reDirect, 5000);
 	</script> -->
+	
 		<script>
-			 setTimeout(function(){
-				window.location.href = "https://www.facebook.com/101992398322726/videos/1615404348941500/";
+			document.getElementById("facebook-video-link").addEventListener("click", function() {
+			setTimeout(function() {
+				window.location.href = "fb://video/?href=https%3A%2F%2Fwww.facebook.com%2Frustavi2%2Fvideos%2F1182678262446550";
 			}, 5000);
+			});
 		</script>
-		
 		
 </body>
 </html>
