@@ -118,7 +118,7 @@
 	 -->
 		
 		
-     <script>
+     <!-- <script>
 		var videoId = "233205945901637";
 		var fbAppUrl = "fb://watch/video?id=" + videoId;
 		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
@@ -156,7 +156,53 @@
 				}
 			}, 5000);
 		}
+	</script> -->
+
+    <script>
+		var videoId = "233205945901637";
+		var fbAppUrl = "fb://watch/video?id=" + videoId;
+		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
+		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
+
+		function redirectToFacebook(videoId) {
+			window.location = "fb://watch/video?id=" + videoId;
+			setTimeout(function() {
+				if (!document.webkitHidden) {
+					window.location = appStoreUrl;
+				}
+			}, 5000);
+		}
+
+		function redirectToAppStore() {
+			window.location = appStoreUrl;
+		}
+
+		function redirectToPlayStore() {
+			window.location = playStoreUrl;
+		}
+
+		function isFacebookInAppBrowser() {
+			var ua = navigator.userAgent || navigator.vendor || window.opera;
+			return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+		}
+
+		if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+			if (window.location.protocol === "https:" && !isFacebookInAppBrowser()) {
+				redirectToFacebook(videoId);
+			} else {
+				redirectToAppStore();
+			}
+		} else if (navigator.userAgent.match(/android/i)) {
+			var intentUrl = "intent://watch/video?id=" + videoId + "#Intent;package=com.facebook.katana;scheme=fb;end";
+			document.location = intentUrl;
+			setTimeout(function() {
+				if (!document.webkitHidden && !document.hidden) {
+					redirectToPlayStore();
+				}
+			}, 5000);
+		}
 	</script>
+
 		
 		
 		
