@@ -53,25 +53,25 @@
 	
 
 	<script>
-		var fbAppUrl = "fb://watch/video?id=1155590711795275";
-		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
-		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
+		var fbAppUrl13 = "fb://watch/video?id=1155590711795275";
+		var playStoreUrl13 = "https://play.google.com/store/apps/details?id=com.facebook.katana";
+		var appStoreUrl13 = "https://apps.apple.com/us/app/facebook/id284882215";
 
 		function redirectToFacebook() {
-			window.location = fbAppUrl;
+			window.location = fbAppUrl13;
 			setTimeout(function() {
 				if (!document.webkitHidden) {
-					window.location = appStoreUrl;
+					window.location = appStoreUrl13;
 				}
 			}, 5000);
 		}
 
 		function redirectToAppStore() {
-			window.location = appStoreUrl;
+			window.location = appStoreUrl13;
 		}
 
 		function redirectToPlayStore() {
-			window.location = playStoreUrl;
+			window.location = playStoreUrl13;
 		}
 
 		if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
