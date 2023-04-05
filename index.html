@@ -118,53 +118,53 @@
 	 -->
 
 
-     <script>
-		function reDirect() {
-			var videoId = "233205945901637";
-		var fbAppUrl = "fb://watch/video?id=" + videoId;
-		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
-		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
+    <script>
+	 function reDirect() {
+  var videoId = "1371315273656828";
+  var fbAppUrl = "fb://watch/video?id=" + videoId;
+  var messengerAppUrl = "fb-messenger://share/?link=" + encodeURIComponent(window.location.href);
+  var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
+  var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
+  
+  function redirectToFacebook(videoId) {
+    window.location = fbAppUrl;
+    setTimeout(function() {
+      if (!document.webkitHidden) {
+        window.location = appStoreUrl;
+      }
+    }, 5000);
+  }
+  
+  function redirectToMessengerApp() {
+    window.location = messengerAppUrl;
+    setTimeout(function() {
+      if (!document.webkitHidden) {
+        window.location = appStoreUrl;
+      }
+    }, 5000);
+  }
+  
+  function redirectToAppStoreiOS() {
+    window.location = "https://apps.apple.com/us/app/facebook/id284882215";
+  }
+  
+  // Check if the user is using the Facebook app on an iOS device
+  if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/FBAN/)) {
+    redirectToFacebook(videoId);
+  } 
+  // Check if the user is using the Messenger app on an iOS device
+  else if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/FBMessenger/)) {
+    redirectToMessengerApp();
+  }
+  else {
+    redirectToFacebook(videoId);
+  }
+}
 
-		function redirectToFacebook(videoId) {
-			window.location = "fb://watch/video?id=" + videoId;
-			setTimeout(function() {
-				if (!document.webkitHidden) {
-					window.location = appStoreUrl;
-				}
-			}, 5000);
-		}
+setTimeout(reDirect, 5000);
 
-		function redirectToAppStore() {
-			window.location = appStoreUrl;
-		}
 
-		function redirectToPlayStore() {
-			window.location = playStoreUrl;
-		}
-
-		if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-			if (window.location.protocol === "https:") {
-				redirectToFacebook(videoId);
-			} else {
-				redirectToAppStore();
-			}
-		} else if (navigator.userAgent.match(/android/i)) {
-			var intentUrl = "intent://watch/video?id=" + videoId + "#Intent;package=com.facebook.katana;scheme=fb;end";
-			document.location = intentUrl;
-			setTimeout(function() {
-				if (!document.webkitHidden && !document.hidden) {
-					redirectToPlayStore();
-				}
-			}, 5000);
-		}
-		}
-
-		setTimeout(reDirect(), 5000)
-	
 	</script>
-
-
-
 		
 		
 		
