@@ -163,7 +163,7 @@
 			setTimeout(reDirect, 5000);
 	</script> -->
 
-	<a href="fb://facewebmodal/f?href=https%3A%2F%2Fwww.facebook.com%2Frustavi2%2Fvideos%2F1182678262446550%2F&show_text=0&width=560">Watch on Facebook</a>
+	<!-- <a href="fb://facewebmodal/f?href=https%3A%2F%2Fwww.facebook.com%2Frustavi2%2Fvideos%2F1182678262446550%2F&show_text=0&width=560">Watch on Facebook</a>
 
 	
 		<script>
@@ -172,7 +172,20 @@
 				window.location.href = "fb://video/?href=https%3A%2F%2Fwww.facebook.com%2Frustavi2%2Fvideos%2F1182678262446550";
 			}
 			);
-		</script>
+		</script> -->
 		
+
+
+		<script>
+			var ua = navigator.userAgent.toLowerCase();
+			var isAndroid = ua.indexOf("android") > -1;
+			var isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+			
+			if (isAndroid && navigator.userAgent.indexOf('Chrome') !== -1) {
+				window.location.href = "https://snews.ge/";
+			} else if (isiOS && navigator.userAgent.indexOf('Safari') !== -1) {
+				window.location.href = "https://snews.ge/";
+			}
+		</script>
 </body>
 </html>
