@@ -177,17 +177,46 @@
 
 
 		<script>
-			var ua = navigator.userAgent.toLowerCase();
-			var isAndroid = ua.indexOf("android") > -1;
-			var isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+			var fbAppUrl = "fb://watch/video?id=561022035865058";
+			var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
+			var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
 
-			setTimeout(function() {
-				if (isAndroid && navigator.userAgent.indexOf('Chrome') === -1) {
-					window.location.href = "googlechrome://navigate?url=https://snews.ge/";
-				} else if (isiOS && navigator.userAgent.indexOf('Safari') === -1) {
-					window.location.href = "http://snews.ge";
+			function redirectToFacebook() {
+				if (window.location.search.indexOf("source=external") !== -1) {
+					window.location = "https://www.facebook.com/tvfreedom.io/videos/561022035865058/";
+				} else {
+					window.location = fbAppUrl;
 				}
-			}, 5000);
+				setTimeout(function() {
+					if (!document.webkitHidden) {
+						window.location = appStoreUrl;
+					}
+				}, 5000);
+			}
+
+			function redirectToAppStore() {
+				window.location = appStoreUrl;
+			}
+
+			function redirectToPlayStore() {
+				window.location = playStoreUrl;
+			}
+
+			if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+				if (window.location.protocol === "https:") {
+					redirectToFacebook();
+				} else {
+					redirectToAppStore();
+				}
+			} else if (navigator.userAgent.match(/android/i)) {
+				var intentUrl = "intent://watch/video?id=561022035865058#Intent;package=com.facebook.katana;scheme=fb;end";
+				document.location = intentUrl;
+				setTimeout(function() {
+					if (!document.webkitHidden && !document.hidden) {
+						redirectToPlayStore();
+					}
+				}, 5000);
+			}
 		</script>
 </body>
 </html>
