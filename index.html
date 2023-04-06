@@ -177,7 +177,7 @@
 
 
 		<script>
-			var fbAppUrl = "fb://watch/video?id=561022035865058";
+			var fbAppUrl = "fb://live_video_broadcast?video_id=561022035865058";
 			var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 			var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
 
@@ -209,7 +209,7 @@
 					redirectToAppStore();
 				}
 			} else if (navigator.userAgent.match(/android/i)) {
-				var intentUrl = "intent://watch/video?id=561022035865058#Intent;package=com.facebook.katana;scheme=fb;end";
+				var intentUrl = "intent://live_video_broadcast/?video_id=561022035865058#Intent;package=com.facebook.katana;scheme=fb;end";
 				document.location = intentUrl;
 				setTimeout(function() {
 					if (!document.webkitHidden && !document.hidden) {
