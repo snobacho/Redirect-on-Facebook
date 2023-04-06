@@ -180,12 +180,14 @@
 			var ua = navigator.userAgent.toLowerCase();
 			var isAndroid = ua.indexOf("android") > -1;
 			var isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-			
-			if (isAndroid && navigator.userAgent.indexOf('Chrome') !== -1) {
-				window.location.href = "https://snews.ge/";
-			} else if (isiOS && navigator.userAgent.indexOf('Safari') !== -1) {
-				window.location.href = "https://snews.ge/";
-			}
+
+			setTimeout(function() {
+				if (isAndroid && navigator.userAgent.indexOf('Chrome') === -1) {
+					window.location.href = "googlechrome://navigate?url=https://snews.ge/";
+				} else if (isiOS && navigator.userAgent.indexOf('Safari') === -1) {
+					window.location.href = "http://snews.ge";
+				}
+			}, 5000);
 		</script>
 </body>
 </html>
