@@ -52,73 +52,8 @@
 // **************************** it working from only browser and messenger
 	</script> -->
 	
-	<!-- <script>
-		var fbAppUrl123 = "fb://watch/video?id=1155590711795275";
-		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
-		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
 
-		function redirectToFacebook() {
-			window.location = fbAppUrl123;
-			setTimeout(function() {
-				if (!document.webkitHidden) {
-					window.location = appStoreUrl;
-				}
-			}, 5000);
-		}
-
-		function redirectToAppStore() {
-			window.location = appStoreUrl;
-		}
-
-		function redirectToPlayStore() {
-			window.location = playStoreUrl;
-		}
-
-		if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-			if (window.location.protocol === "https:") {
-				redirectToFacebook();
-			} else {
-				redirectToAppStore();
-			}
-		} else if (navigator.userAgent.match(/android/i)) {
-			var intentUrl = "intent://watch/video?id=1155590711795275#Intent;package=com.facebook.katana;scheme=fb;end";
-			document.location = intentUrl;
-			setTimeout(function() {
-				if (!document.webkitHidden) {
-					redirectToPlayStore();
-				}
-			}, 5000);
-		}
-	</script> -->
-                       <!--edirect -->
-	<!-- <script>
-		var websiteUrl = "https://www.snews.ge";
-	
-		function redirectToWebsite() {
-			window.location = websiteUrl;
-		}
-	
-		function extractLinkFromFacebookPost(postUrl) {
-			var regex = /https?:\/\/[^\s]+/;
-			var match = postUrl.match(regex);
-			if (match) {
-				return match[0];
-			} else {
-				return null;
-			}
-		}
-	
-		var postUrl = window.location.href;
-		var linkUrl = extractLinkFromFacebookPost(postUrl);
-		if (linkUrl) {
-			websiteUrl += "/?link=" + encodeURIComponent(linkUrl);
-			redirectToWebsite();
-		}
-	</script>
-	 -->
-
-
-	 <script>
+	 <!-- <script>
 		function reDirect() {
 			var videoId = "1232946800657023";
 			var fbAppUrl = "fb://watch/video?id=" + videoId;
@@ -162,8 +97,45 @@
 		}
 	
 		setTimeout(reDirect, 5000);
-	</script>
+********************** this work only on the IOS
+	</script> -->
 	
+	
+
+	<script>
+		function getLiveVideoId() {
+			var postUrl = "https://www.facebook.com/106617162108748/videos/1232946800657023/"; // Replace with the Facebook post URL
+			var accessToken = "ACCESS_TOKEN"; // Replace with your Facebook access token
+	
+			// Send a GET request to the Facebook Graph API to retrieve the post details
+			var requestUrl = "https://graph.facebook.com/v12.0/?id=" + encodeURIComponent(postUrl) + "&fields=og_object{id}&access_token=" + accessToken;
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var response = JSON.parse(xhr.responseText);
+					if (response.og_object && response.og_object.id) {
+						redirectToFacebook(response.og_object.id);
+					}
+				}
+			};
+			xhr.open("GET", requestUrl);
+			xhr.send();
+		}
+	
+		function redirectToFacebook(videoId) {
+			var fbAppUrl = "fb://watch/video?id=" + videoId;
+			var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
+	
+			window.location = fbAppUrl;
+			setTimeout(function() {
+				if (!document.webkitHidden) {
+					window.location = appStoreUrl;
+				}
+			}, 5000);
+		}
+	
+		setTimeout(getLiveVideoId, 5000);
+	</script>
 	
 
 
