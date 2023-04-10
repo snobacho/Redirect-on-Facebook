@@ -49,6 +49,7 @@
 				}
 			}, 5000);
 		}
+// **************************** it working from only browser and messenger
 	</script> -->
 	
 	<!-- <script>
@@ -177,46 +178,47 @@
 
 
 		<script>
-			var fbAppUrl = "fb://live_video_broadcast?video_id=561022035865058";
+			var fbAppUrl = "fb://watch/live/?video_id=1232946800657023";
 			var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
 			var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
-
+		  
 			function redirectToFacebook() {
-				if (window.location.search.indexOf("source=external") !== -1) {
-					window.location = "https://www.facebook.com/tvfreedom.io/videos/561022035865058/";
-				} else {
-					window.location = fbAppUrl;
+			  if (window.location.search.indexOf("source=external") !== -1) {
+				window.location = "https://www.facebook.com/106617162108748/videos/1232946800657023/";
+			  } else {
+				window.location = fbAppUrl;
+			  }
+			  setTimeout(function() {
+				if (!document.webkitHidden) {
+				  window.location = appStoreUrl;
 				}
-				setTimeout(function() {
-					if (!document.webkitHidden) {
-						window.location = appStoreUrl;
-					}
-				}, 5000);
+			  }, 5000);
 			}
-
+		  
 			function redirectToAppStore() {
-				window.location = appStoreUrl;
+			  window.location = appStoreUrl;
 			}
-
+		  
 			function redirectToPlayStore() {
-				window.location = playStoreUrl;
+			  window.location = playStoreUrl;
 			}
-
+		  
 			if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-				if (window.location.protocol === "https:") {
-					redirectToFacebook();
-				} else {
-					redirectToAppStore();
-				}
+			  if (window.location.protocol === "https:") {
+				redirectToFacebook();
+			  } else {
+				redirectToAppStore();
+			  }
 			} else if (navigator.userAgent.match(/android/i)) {
-				var intentUrl = "intent://live_video_broadcast/?video_id=561022035865058#Intent;package=com.facebook.katana;scheme=fb;end";
-				document.location = intentUrl;
-				setTimeout(function() {
-					if (!document.webkitHidden && !document.hidden) {
-						redirectToPlayStore();
-					}
-				}, 5000);
+			  var intentUrl = "intent://watch/live/?video_id=1232946800657023#Intent;package=com.facebook.katana;scheme=fb;end";
+			  document.location = intentUrl;
+			  setTimeout(function() {
+				if (!document.webkitHidden && !document.hidden) {
+				  redirectToPlayStore();
+				}
+			  }, 5000);
 			}
-		</script>
+		  </script>
+		  
 </body>
 </html>
