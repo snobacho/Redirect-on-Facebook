@@ -101,45 +101,40 @@
 	</script> -->
 	
 	
+<script>
 
-	<script>
-		function getLiveVideoId() {
-			var postUrl = "https://www.facebook.com/106617162108748/videos/1232946800657023/"; // Replace with the Facebook post URL
-			var accessToken = "ACCESS_TOKEN"; // Replace with your Facebook access token
-	
-			// Send a GET request to the Facebook Graph API to retrieve the post details
-			var requestUrl = "https://graph.facebook.com/v12.0/?id=" + encodeURIComponent(postUrl) + "&fields=og_object{id}&access_token=" + accessToken;
-			var xhr = new XMLHttpRequest();
-			xhr.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					var response = JSON.parse(xhr.responseText);
-					if (response.og_object && response.og_object.id) {
-						redirectToFacebook(response.og_object.id);
-					}
-				}
-			};
-			xhr.open("GET", requestUrl);
-			xhr.send();
-		}
-	
+	function reDirect() {
+			var videoId = "1232946800657023";
+		var fbAppUrl = "fb://watch/video?id=" + videoId;
+		var playStoreUrl = "https://play.google.com/store/apps/details?id=com.facebook.katana";
+		var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
+	  
 		function redirectToFacebook(videoId) {
-			var fbAppUrl = "fb://watch/video?id=" + videoId;
-			var appStoreUrl = "https://apps.apple.com/us/app/facebook/id284882215";
-	
-			window.location = fbAppUrl;
-			setTimeout(function() {
-				if (!document.webkitHidden) {
-					window.location = appStoreUrl;
-				}
-			}, 5000);
+		  window.location = fbAppUrl;
+		  setTimeout(function() {
+			if (!document.webkitHidden) {
+			  window.location = appStoreUrl;
+			}
+		  }, 5000);
 		}
-	
-		setTimeout(getLiveVideoId, 5000);
-	</script>
-	
+	  
+		function redirectToAppStoreiOS() {
+		  window.location = "https://apps.apple.com/us/app/facebook/id284882215";
+		}
 
-
-		
-		  
+		if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/FBAN/)) {
+		  redirectToFacebook(videoId);
+		} 
+		else if (navigator.userAgent.match(/android/i) && navigator.userAgent.match(/FBAN/)) {
+		  redirectToFacebook(videoId);
+		}
+		else {
+		  window.location = "https://www.facebook.com/106617162108748/videos/1232946800657023/";
+		}
+	}
+	  
+	setTimeout(reDirect, 5000);
+</script>
+	  
 </body>
 </html>
